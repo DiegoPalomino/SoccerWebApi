@@ -173,7 +173,7 @@ namespace Soccer.Web.Data
         {
             string path = Path.Combine(Directory.GetCurrentDirectory(), $"wwwroot\\images\\Teams", $"{name}.jpg");
             string imageId = await _blobHelper.UploadBlobAsync(path, "teams");
-            _context.Teams.Add(new TeamEntity { Name = name, LogoPath = imageId });
+            _context.Teams.Add(new TeamEntity { Name = name, LogoPath = imageId }); 
         }
 
         private void AddTeam(string name)
