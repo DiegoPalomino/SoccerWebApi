@@ -30,7 +30,7 @@ namespace SoccerWebApi.Models
         public string FullNameWithDocument => $"{FirstName} {LastName} - {Document}";
 
         public string PictureFullPath => string.IsNullOrEmpty(PicturePath)
-            ? "https://SoccerWeb4.azurewebsites.net//images/noimage.png"
-            : $"https://zulusoccer.blob.core.windows.net/users/{PicturePath}";
+            ? "https://soccerwebapi.azurewebsites.net/images/noimage.png"
+            : $"https://soccerwebapi.azurewebsites.net/images/users/{PicturePath}";
     }
 }

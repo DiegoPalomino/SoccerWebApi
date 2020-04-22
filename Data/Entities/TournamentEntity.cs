@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.IO;
 
 namespace SoccerWebApi.Data.Entities
 {
@@ -38,10 +39,12 @@ namespace SoccerWebApi.Data.Entities
         [Display(Name = "Logo")]
         public string LogoPath { get; set; }
 
+        public string FinalPath => !string.IsNullOrEmpty(LogoPath) ? Path.GetFileName(LogoPath) : LogoPath;
+
         [Display(Name = "Logo")]
-        public string LogoFullPath => string.IsNullOrEmpty(LogoPath)
+        public string LogoFullPath => string.IsNullOrEmpty(FinalPath)
             ? "https://soccerwebapi.azurewebsites.net/images/noimage.png"
-            : $"https://soccerwebapi.azurewebsites.net/images/tournaments/{LogoPath}";
+            : $"https://soccerwebapi.azurewebsites.net/images/tournaments/{FinalPath}";
 
         public ICollection<GroupEntity> Groups { get; set; }
     }

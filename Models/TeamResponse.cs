@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -13,8 +14,10 @@ namespace SoccerWebApi.Models
 
         public string LogoPath { get; set; }
 
-        public string LogoFullPath => string.IsNullOrEmpty(LogoPath)
-            ? "https://SoccerWeb0.azurewebsites.net//images/noimage.png"
-            : $"https://zulusoccer.blob.core.windows.net/teams/{LogoPath}";
+        public string FinalPath => !string.IsNullOrEmpty(LogoPath) ? Path.GetFileName(LogoPath) : LogoPath;
+
+        public string LogoFullPath => string.IsNullOrEmpty(FinalPath)
+            ? "https://soccerwebapi.azurewebsites.net/images/noimage.png"
+            : $"https://soccerwebapi.azurewebsites.net/images/tournaments/{FinalPath}";
     }
 }
